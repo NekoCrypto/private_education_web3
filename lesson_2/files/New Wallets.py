@@ -1,0 +1,10 @@
+{'wallet5': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet3': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet7': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet2': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet1': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet10': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet9': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet4': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet6': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}
+{'wallet8': {'network': 'ethereum', 'address': '0x74C45814f7734892B93D9b23B534692aBfdF1f1F', 'private_key': '0xdef5f6f1396e9c82e4cb8e341345d48794576543dbc224e88d874ac13f3b804a', 'balance': 0}}

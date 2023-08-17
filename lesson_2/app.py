@@ -46,7 +46,11 @@ async def generate_addr(client, wallet_number):
     with open(file_path, "a") as file:
         file.write(f"{wallet_info}\n")
 
+<<<<<<< HEAD
     return logger.success(f'Address Generated | Please check in files/New Wallets.py')
+=======
+    return return logger.success(f'Address Generated | Please check in files/New Wallets.py')
+>>>>>>> fbf7f91bbc1e9b57e3df004526f12b1994f46d97
 
 
 '''

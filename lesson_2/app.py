@@ -6,6 +6,7 @@ from sdk.data.models import Networks
 from sdk.client import Client
 
 import os
+from loguru import logger
 
 # from private_data import private_key1, private_key2, private_key3, proxy
 
@@ -45,7 +46,7 @@ async def generate_addr(client, wallet_number):
     with open(file_path, "a") as file:
         file.write(f"{wallet_info}\n")
 
-    return print(f'Wallet Generation is Done')
+    return logger.success(f'Address Generated | Please check in files/New Wallets.py')
 
 
 '''

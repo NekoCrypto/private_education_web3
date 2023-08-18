@@ -148,7 +148,7 @@ class WooFi(Base):
 
         return f'{failed_text}!'
 
-    async def swap_usdt_to_eth(self, amount: TokenAmount, slippage: float = 1):
+    async def swap_usdt_to_eth(self, amount: Optional[TokenAmount] = None, slippage: float = 1):
         failed_text = 'Failed swap USDT to ETH via WooFi'
         contract = await self.client.contracts.get(contract_address=Contracts.ARBITRUM_WOOFI)
         from_token = Contracts.ARBITRUM_USDT
@@ -186,7 +186,7 @@ class WooFi(Base):
 
         return f'{failed_text}!'
 
-    async def swap_wbtc_to_eth(self, amount: TokenAmount, slippage: float = 1):
+    async def swap_wbtc_to_eth(self, amount: Optional[TokenAmount] = None, slippage: float = 1):
         failed_text = 'Failed swap WBTC to ETH via WooFi'
 
         contract = await self.client.contracts.get(contract_address=Contracts.ARBITRUM_WOOFI)

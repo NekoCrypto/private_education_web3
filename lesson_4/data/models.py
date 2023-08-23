@@ -85,3 +85,7 @@ class Contracts(Singleton):
     CORE_BINACEPEG = RawContract(
         address='0x55d398326f99059fF775485246999027B3197955', abi=DefaultABIs.Token
     )
+
+    CORE_CORE_BRIDGE = RawContract(
+        address='0x52e75D318cFB31f9A2EdFa2DFee26B161255B233', abi=read_json(path=(ABIS_DIR, 'corebridge.json'))
+    )

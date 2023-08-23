@@ -1,6 +1,7 @@
 import asyncio
 from typing import Optional
 from loguru import logger
+from decimal import Decimal
 
 from web3.types import TxParams
 from py_eth_async.data.models import Networks, TokenAmount, Unit, Ether
@@ -11,34 +12,48 @@ from py_eth_async.transactions import Tx
 from tasks.woofi import WooFi
 from data.models import Contracts
 from data.config import ABIS_DIR
-from private_data import private_key1, proxy
+# from private_data import private_key1, proxy
 
 
-async def check_balance():
-    client = Client(network=Networks.Ethereum, proxy=proxy, check_proxy=False)
-    balance = await client.wallet.balance()
-    print(f'balance: {balance.Ether} | {client.account.key.hex()} | {client.account.address}')
-    if balance.Wei > 0:
-        exit(1)
-
-
-async def bruteforce(count_tasks: int):
-    u1 = Unit(amount=1, unit='ether')
-    u2 = Unit(amount=2, unit='ether')
-    res = u1 * u2
-    print(res.Ether)
-
-    # while True:
-    #     tasks = []
-    #     for _ in range(count_tasks):
-    #         tasks.append(asyncio.create_task(check_balance()))
-    #     await asyncio.wait(tasks)
+async def swap(client, woofi, pair):
+    if pair == 'ETH - USDT':
+        await woofi.swap_eth_to_usdt(amount=0.0001)
+    elif pair == 'USDT - ETH':
+        await woofi.swap_usdt_to_eth()
+    elif pair == 'ETH - WBTC':
+        await woofi.swap_eth_to_wbtc(amount=0.00012)
+    elif pair == 'WBTC - ETH':
+        await woofi.swap_wbtc_to_eth()
+    else:
+        logger.info(f"You didn't choose any Pair to Swap")
 
 
 async def main():
-    client = Client(private_key=private_key1, network=Networks.Arbitrum)
+    client = Client(network=Networks.Arbitrum)
 
-    # print(client.account.address)
+    trade_pairs = ["ETH - USDT", "ETH - WBTC", "USDT - ETH", "WBTC - ETH"]
+
+    # Display available trade pairs to the user
+    print("Please choose a pair to SWAP:")
+    for index, pair in enumerate(trade_pairs, start=1):
+        print(f"{index}. {pair}")
+
+    # Get user's choice
+    user_choice = int(input("Enter the number of the pair you want to choose: "))
+
+    # Validate user's choice
+    if 1 <= user_choice <= len(trade_pairs):
+        selected_pair = trade_pairs[user_choice - 1]
+        print("You have chosen:", selected_pair)
+
+        await asyncio.sleep(2)
+
+        logger.info(f'You choose to swap {selected_pair}')
+
+        await swap(client, WooFi(client=Client), selected_pair)
+
+    else:
+        print("Invalid choice. Please choose a valid number.")
     # print(await client.contracts.get_signature(hex_signature='0x7dc20382'))
     # print(await client.contracts.parse_function(text_signature='swap(address,address,uint256,uint256,address,address)'))
     # print(await client.contracts.get_contract_attributes(contract=Contracts.ARBITRUM_USDC))
@@ -70,12 +85,12 @@ async def main():
     #     logger.error(res)
     # else:
     #     logger.success(res)
-
-    tx_hash = '0xf9bd50990974b8107a8ef1a2d2dc79c5de6114b42d5533827068ddccabe35240'
-    tx = Tx(tx_hash=tx_hash)
-    print(tx)
-    print(await tx.parse_params(client=client))
-    print(await tx.decode_input_data(client=client, contract=Contracts.ARBITRUM_WOOFI))
+    #
+    # tx_hash = '0xf9bd50990974b8107a8ef1a2d2dc79c5de6114b42d5533827068ddccabe35240'
+    # tx = Tx(tx_hash=tx_hash)
+    # print(tx)
+    # print(await tx.parse_params(client=client))
+    # print(await tx.decode_input_data(client=client, contract=Contracts.ARBITRUM_WOOFI))
 
 
 if __name__ == '__main__':

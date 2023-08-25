@@ -86,6 +86,21 @@ class Contracts(Singleton):
         address='0x55d398326f99059fF775485246999027B3197955', abi=DefaultABIs.Token
     )
 
-    CORE_CORE_BRIDGE = RawContract(
-        address='0x52e75D318cFB31f9A2EdFa2DFee26B161255B233', abi=read_json(path=(ABIS_DIR, 'corebridge.json'))
+    CORE_CORE_ROUTER = RawContract(
+        address='0x52e75D318cFB31f9A2EdFa2DFee26B161255B233', abi=read_json(path=(ABIS_DIR, 'corerouter.json'))
     )
+
+    UNISWAP_ETHERIUM_ROUTER = RawContract(
+        address='0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad', abi=read_json(path=(ABIS_DIR, 'universalrouter.json'))
+    )
+
+    ARBITRUM_GETH_GOERLI = RawContract(
+        address='0xdD69DB25F6D620A7baD3023c5d32761D353D3De9', abi=DefaultABIs.Token
+    )
+
+    TESTNET_BRIDGE_ARBITRUM = RawContract(
+        address='0xdD69DB25F6D620A7baD3023c5d32761D353D3De9', abi=read_json(path=(ABIS_DIR, 'testnetbridge.json'))
+    )
+
+
+

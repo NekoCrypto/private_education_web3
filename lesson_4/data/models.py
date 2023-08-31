@@ -98,9 +98,58 @@ class Contracts(Singleton):
         address='0xdD69DB25F6D620A7baD3023c5d32761D353D3De9', abi=DefaultABIs.Token
     )
 
-    TESTNET_BRIDGE_ARBITRUM = RawContract(
-        address='0xdD69DB25F6D620A7baD3023c5d32761D353D3De9', abi=read_json(path=(ABIS_DIR, 'testnetbridge.json'))
+    MEUNA_HAY_REQUEST = RawContract(
+        address='0x67c03dbd6f8b377345d924726acdb5eb5192f63e', abi=read_json(path=(ABIS_DIR, 'meunarequesthay.json'))
     )
 
+    MEUNA_ROUTER = RawContract(
+        address='0x0970C29D31bFcd7ebF803B6C879B36f69fC39f28', abi=read_json(path=(ABIS_DIR, 'meunarouter.json'))
+    )
 
+    MEUNA_ERC20MOCK = RawContract(
+            address='0xA0C6843CCC4F4219e3e5751D4F93dE17C303D658', abi=read_json(path=(ABIS_DIR, 'meunaerc20mock.json'))
+    )
 
+    MEUNA_ERC20MOCK_POOL = RawContract(
+            address='0x47034b3c18f17dd89ce1d7f87b9a90235158e4cc', abi=read_json(path=(ABIS_DIR, 'meunaerc20mock.json'))
+    )
+
+    MEUNA_PAIR = RawContract(
+            address='0xd7931924662d8086160b87d17622b23dff04d129', abi=read_json(path=(ABIS_DIR, 'meunapair.json'))
+    )
+
+    MEUNA_STAIKING = RawContract(
+            address='0x65cbe6bdc2b07b2e25ef6b53a97899fd4b4f1a8b', abi=read_json(path=(ABIS_DIR, 'stakingcontract.json'))
+    )
+
+    MEUNA_MINT_SYNTEST3 = RawContract(
+            address='0xb45f6db83bbde9b6aa1dbc688b27c5c2defd6ad0', abi=read_json(path=(ABIS_DIR, 'mintsyntest3.json'))
+    )
+
+    MEUNA_HAY = RawContract(
+            address='0xA0C6843CCC4F4219e3e5751D4F93dE17C303D658', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MAPPLE = RawContract(
+            address='0x47034B3c18f17dd89CE1d7F87B9A90235158E4CC', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MAMZN = RawContract(
+            address='0x5744235b2D4b5e82a0F65a6aC599C50ffB805f75', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MXAU = RawContract(
+            address='0x3fae7eC38e169a04ca1F0c3001710a4b3AB62ab8', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MHKD = RawContract(
+            address='0x5C8B2B5F1a57562a66293e59752e1AaAa220A133', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MAED = RawContract(
+            address='0x59955AB2358b5b8f2eb9a6892a9F529a7b79820D', abi=DefaultABIs.Token
+    )
+
+    MEUNA_MULTICALL3 = RawContract(
+            address='0xb45f6db83bbde9b6aa1dbc688b27c5c2defd6ad0', abi=read_json(path=(ABIS_DIR, 'multicall3.json'))
+    )

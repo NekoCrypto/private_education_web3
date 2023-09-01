@@ -3,7 +3,7 @@ from typing import Optional
 from pretty_utils.miscellaneous.files import touch, write_json, read_json
 from pretty_utils.type_functions.dicts import update_dict
 
-from utils.files_utils import write_row_to_csv_file
+from utilss.files_utils import write_row_to_csv_file
 from data import config
 from data.models import InitialCsvData
 
@@ -24,6 +24,7 @@ def create_files():
         'stargate_swaps_usdc_amount': {'from': 0, 'to': 0},
         'coredao_swaps': {'from': 5, 'to': 15},
         'coredao_swaps_amount': {'from': 0.001, 'to': 0.01},
+        'uniswap_geth_amount': {'from': 5.0, 'to': 10.0},
         'testnetbridge_swaps': {'from': 5, 'to': 15},
         'testnetbridge_swaps_amount': {'from': 0.009, 'to': 0.012},
         'initial_actions_delay': {'from': 3600, 'to': 7200},

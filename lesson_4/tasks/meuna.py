@@ -76,16 +76,6 @@ class Meuna(Base):
         from_token_name = Meuna.contract_data[self.client.network.name]['hay_contract'].address
         to_token_name = Meuna.contract_data[self.client.network.name]['mapple'].address
         print(to_token_name)
-        # failed_text = f'Failed swap {from_token_name} {amount.Ether} to {to_token_name} via Meuna'
-
-        # from_token_price = await self.get_token_price(token=from_token_name)
-        # to_token_price = await self.get_token_price(token=to_token_name)
-
-
-        # min_to_amount = TokenAmount(
-        #     amount=from_token_price / to_token_price * float(amount.Ether) * (1 - slippage / 100),
-        #     decimals=await self.get_decimals(contract_address=to_token_name.address)
-        # )
 
         # if await self.approve_interface(
         #         token_address='0x0970C29D31bFcd7ebF803B6C879B36f69fC39f28',
@@ -95,6 +85,7 @@ class Meuna(Base):
         #     await asyncio.sleep(random.randint(5, 10))
         # else:
         #     return f' | can not approve'
+
         amount = 2000000000000000000
         min_amount = await self.get_value(amount=amount, from_token=from_token_name, to_token=to_token_name)
 
@@ -191,3 +182,60 @@ class Meuna(Base):
         #     return f'{failed_text}: {e}'
 
 
+    async def pool_meuna(
+            self,
+            # to_network_name: str,
+            amount: Optional[TokenAmount] = None,
+            # slippage: float = 0.5,
+            # max_fee: float = 1
+    ):
+        router_contract = await self.client.contracts.get(
+            contract_address=Contracts.MEUNA_ROUTER.address,
+            abi=Contracts.MEUNA_ROUTER.abi
+        )
+
+        from_token_name = Meuna.contract_data[self.client.network.name]['hay_contract'].address
+        to_token_name = Meuna.contract_data[self.client.network.name]['mhkd'].address
+
+        # if not amount:
+        #     amount = await self.client.wallet.balance(token=to_token_name.address)
+
+        logger.info(
+            f'{self.client.account.address} | Stargate | '
+            f'Swap| amount: {amount.Ether}')
+
+        min_amount = await self.get_value(amount=amount.Wei, from_token=from_token_name, to_token=to_token_name)
+        args = TxArgs(
+            amountIn=amount.Wei,
+            amountOutMin=int(min_amount),
+            path=[str(from_token_name), str(to_token_name)],
+            to=self.client.account.address,
+            deadline=int(time.time() + 60 * 5),
+        )
+
+        native_balance = await self.client.wallet.balance()
+        logger.info(f'Native Balance is {native_balance.Ether}')
+
+        if await self.approve_interface(
+                token_address=Contracts.MEUNA_HAY.address,
+                spender=Contracts.MEUNA_ROUTER,
+                amount=await self.client.wallet.balance(token=to_token_name)
+        ):
+            await asyncio.sleep(random.randint(5, 10))
+        else:
+            return f'can not approve'
+
+        tx_params = TxParams(
+            to=router_contract.address,
+            data=router_contract.encodeABI('swapExactTokensForTokens', args=args.tuple()),
+        )
+
+        tx = await self.client.transactions.sign_and_send(tx_params=tx_params)
+        receipt = await tx.wait_for_receipt(client=self.client, timeout=200)
+        if receipt:
+            return f'{amount.Ether} {from_token_name} was swaped to {to_token_name} via Meuna: {tx.hash.hex()}'
+
+        return f'failed_text!'
+
+        # except Exception as e:
+        #     return f'{failed_text}: {e}'

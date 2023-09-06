@@ -48,7 +48,7 @@ class Import:
 
 
 # Call the wallets() method to initiate the data import and printing
-Import.wallets()
-
-N	address										name				proxy	stargate_swaps	coredao_swaps	uniswap_geth_amount	testnetbridge_swaps
-1	0xeE3c73D22e145695b4019de3CA18cAAF9b52Fec8	Olga Alexandrovna	olga:0123456@127.11.101.08	    15	5	5.0000000000	9
+# Import.wallets()
+#
+# N	address										name				proxy	stargate_swaps	coredao_swaps	uniswap_geth_amount	testnetbridge_swaps
+# 1	0xeE3c73D22e145695b4019de3CA18cAAF9b52Fec8	Olga Alexandrovna	olga:0123456@127.11.101.08	    15	5	5.0000000000	9

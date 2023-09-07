@@ -1,0 +1,38 @@
+{
+  "stargate_swaps": {
+    "from": 5,
+    "to": 15
+  },
+  "stargate_swaps_usdc_amount": {
+    "from": 0,
+    "to": 0
+  },
+  "coredao_swaps": {
+    "from": 5,
+    "to": 15
+  },
+  "coredao_swaps_amount": {
+    "from": 0.001,
+    "to": 0.01
+  },
+  "uniswap_geth_amount": {
+    "from": 5,
+    "to": 10
+  },
+  "testnetbridge_swaps": {
+    "from": 5.0,
+    "to": 15.0
+  },
+  "testnetbridge_swaps_amount": {
+    "from": 0.009,
+    "to": 0.012
+  },
+  "initial_actions_delay": {
+    "from": 3600,
+    "to": 7200
+  },
+  "activity_actions_delay": {
+    "from": 259200,
+    "to": 345600
+  }
+}

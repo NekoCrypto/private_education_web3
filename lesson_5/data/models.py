@@ -79,10 +79,12 @@ class Contracts(Singleton):
 
 
 class InitialCsvData:
-    HEADER = ['private_key']
+    HEADER = ['private_key', 'name', 'proxy']
 
-    def __init__(self, private_key: str):
+    def __init__(self, private_key: str, name: str, proxy: str):
         self.private_key = private_key
+        self.name = name
+        self.proxy = proxy
 
 
 @dataclass
@@ -118,4 +120,7 @@ class Settings(Singleton, AutoRepr):
         )
         self.activity_actions_delay: FromTo = FromTo(
             from_=json['activity_actions_delay']['from'], to_=json['activity_actions_delay']['to']
+        )
+        self.uniswap_geth_amount: FromTo = FromTo(
+            from_=json['uniswap_geth_amount']['from'], to_=json['uniswap_geth_amount']['to']
         )

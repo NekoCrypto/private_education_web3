@@ -1,0 +1,39 @@
+[
+   {
+      "inputs":[
+         {
+            "internalType":"address",
+            "name":"_stable",
+            "type":"address"
+         }
+      ],
+      "stateMutability":"nonpayable",
+      "type":"constructor"
+   },
+   {
+      "inputs":[
+
+      ],
+      "name":"claim",
+      "outputs":[
+
+      ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+
+      ],
+      "name":"stable",
+      "outputs":[
+         {
+            "internalType":"address",
+            "name":"",
+            "type":"address"
+         }
+      ],
+      "stateMutability":"view",
+      "type":"function"
+   }
+]

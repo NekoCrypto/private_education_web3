@@ -347,7 +347,6 @@ class Stargate(Base):
             # Networks.CoinBase,
         ]
 
-
         max_balance = 0
         network_with_max_balance = None
         max_balance_symbol = None

@@ -26,14 +26,17 @@ async def test():
     from py_eth_async.data.models import Networks
     from data.models import Contracts
 
-    wallet = get_wallets()[0]
-
-    client = Client(private_key=wallet.private_key, network=Networks.BSC)
+    # for i in range(0, 4):
+    wallet = get_wallets()[3]
+    print(wallet.address)
+    print('=' * 10)
+    client = Client(private_key=wallet.private_key, network=Networks.Avalanche)
 
     controller = Controller(client=client)
     # print(await controller.count_testnetbridge_swaps())
     # print(await controller.count_coredao_swaps())
     # print(await controller.count_stargate_swaps())
+    print(await controller.count_stargate_swaps())
 
 
 async def start_script():

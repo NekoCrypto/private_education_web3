@@ -49,6 +49,18 @@ async def select_random_action(controller: Controller, wallet: Wallet, initial: 
         else:
             logger.debug(f'{controller.client.account.address} | not enough usdt balance ({usdt_balance.Ether})')
 
+    if testnetbridge_swaps < wallet.testnetbridge_swaps:
+        arbitrum_client = Client(
+            private_key=controller.client.account.key, network=Networks.Arbitrum, proxy=controller.client.proxy)
+        geth_balance = await arbitrum_client.wallet.balance(token=Contracts.ARBITRUM_GETH)
+        if geth_balance.Ether >= settings.testnetbridge_swaps_amount.to_:
+            possible_actions.append(controller.testnetbridge.action())
+            weights.append(0.2)
+        elif geth_balance.Ether < settings.testnetbridge_swaps.to_:
+            logger.debug(f'{controller.client.account.address} | not enough geth balance ({geth_balance.Ether})')
+            possible_actions.append(controller.uniswap.action())
+            weights.append(0.5)
+
     if possible_actions:
         action = None
         while not action:
@@ -58,3 +70,6 @@ async def select_random_action(controller: Controller, wallet: Wallet, initial: 
 
     logger.info(f'{controller.client.account.address} | select_random_action | can not choose the action')
     return None
+
+
+

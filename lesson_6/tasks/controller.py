@@ -10,7 +10,7 @@ from tasks.uniswap import Uniswap
 from tasks.woofi import WooFi
 from data.models import Contracts
 
-
+from loguru import logger
 class Controller(Base):
     def __init__(self, client: Client):
         super().__init__(client=client)
@@ -43,3 +43,19 @@ class Controller(Base):
         except HTTPException as err:
             return 0
         return len(txs)
+
+    async def count_stargate_swaps(self) -> int:
+        tx_counter = 0
+        for network in Stargate.supported_networks:
+            client = Client(private_key='', network=network)
+            try:
+                contract = Stargate.contract_data[network.name]['stargate_contract']
+                txs = await client.transactions.find_txs(
+                    contract=contract,
+                    function_name='swap' and '',
+                    address=self.client.account.address,
+                )
+                tx_counter += len(txs)
+            except HTTPException as err:
+                return 0
+        return tx_counter

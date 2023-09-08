@@ -48,11 +48,12 @@ class Controller(Base):
         tx_counter = 0
         for network in Stargate.supported_networks:
             client = Client(private_key='', network=network)
+            print(network.name)
             try:
                 contract = Stargate.contract_data[network.name]['stargate_contract']
                 txs = await client.transactions.find_txs(
                     contract=contract,
-                    function_name='swap' and '',
+                    methodId='0x9fbf10fc',
                     address=self.client.account.address,
                 )
                 tx_counter += len(txs)

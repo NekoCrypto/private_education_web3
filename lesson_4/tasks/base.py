@@ -37,7 +37,7 @@ class Base:
         tx = await self.client.transactions.approve(
             token=token_address,
             spender=spender,
-            amount=amount
+            amount=amount.Wei
         )
         receipt = await tx.wait_for_receipt(client=self.client, timeout=200)
         if receipt:

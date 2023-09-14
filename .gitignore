@@ -6,7 +6,7 @@ __pycache__/
 private_data.py
 .idea/*
 */.idea/*
-
+lesson_6/files
 # C extensions
 *.so
 
@@ -29,6 +29,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+lesson_7/files
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

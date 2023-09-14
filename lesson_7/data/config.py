@@ -19,3 +19,6 @@ SETTINGS_PATH = os.path.join(FILES_DIR, 'settings.json')
 
 logger.add(f'{DEBUG_LOG}', format='{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}', level='DEBUG')
 # logger.remove()
+
+
+OK_LINK = str(os.getenv('OK_LINK'))

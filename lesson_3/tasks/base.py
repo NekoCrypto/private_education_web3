@@ -44,14 +44,14 @@ class Base:
             return True
         return False
 
-    async def get_token_price(self, token='ETH', retries: int = 5):
+    async def get_token_price(self, token='ETH', token2='USDT', retries: int = 5):
         token = token.upper()
         for _ in range(retries):
             try:
                 async with aiohttp.ClientSession() as session:
                     logger.info(
-                        f'{self.client.account.address} | getting {token} price')
-                    async with session.get(f'https://api.binance.com/api/v3/depth?limit=1&symbol={token}USDT') as r:
+                        f'{self.client.account.address} | getting {token}-{token2} price')
+                    async with session.get(f'https://api.binance.com/api/v3/depth?limit=1&symbol={token}{token2}') as r:
                         if r.status != 200:
                             logger.error(f'code: {r.status} | json: {r.json()}')
                             exit()

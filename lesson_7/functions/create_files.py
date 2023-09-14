@@ -20,7 +20,7 @@ def create_files():
         current_settings = {}
 
     settings = {
-        'oklink_api_key': '',
+        'oklink_api_key': '5cef4638-c27e-425d-9a13-b3820d71e2f8',
         'maximum_gas_price': 19.5,
         'minimal_balance': 0.0001,
         'initial_actions_delay': {'from': 3600, 'to': 7200},

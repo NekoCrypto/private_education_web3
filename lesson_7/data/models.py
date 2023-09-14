@@ -35,6 +35,18 @@ class Contracts(Singleton):
         address='0x2da10A1e27bF85cEdD8FFb1AbBe97e53391C0295', abi=read_json(path=(ABIS_DIR, 'syncswap.json'))
     )
 
+    SPACEFI = RawContract(
+        address='0xbE7D1FD1f6748bbDefC4fbaCafBb11C6Fc506d1d', abi=read_json(path=(ABIS_DIR, 'spacefi.json'))
+    )
+
+    DIAMONDPROXY = RawContract(
+        address='0x32400084C286CF3E17e7B677ea9583e60a000324', abi=read_json(path=(ABIS_DIR, 'diamondproxy.json'))
+    )
+
+    L2ETHTOKEN = RawContract(
+        address='0x000000000000000000000000000000000000800A', abi=read_json(path=(ABIS_DIR, 'l2ethtoken.json'))
+    )
+
 
 class InitialCsvData:
     HEADER = ['private_key', 'name', 'proxy']
